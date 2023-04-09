@@ -100,14 +100,19 @@ public updateEmployee(id: number, employee: any): Observable<any> {
 
 
   // Delete an employee by ID
-  public deleteEmployee(id: number): Observable<any> {
+  public deleteEmployee(id: string): Observable<any> {
     const mutation = `
-      mutation DeleteEmployee($id: ID!) {
-        deleteEmployee(id: $id) {
+      mutation deleteEmployee($id: String!){
+        deleteEmployee(id: $id){
           id
+          first_name
+          last_name
+          email
+          gender
+          salary
         }
-      }
-    `;
+      }`;
     return this.graphqlRequest(mutation, { id });
   }
+  
 }

@@ -1,5 +1,12 @@
-<div class="container">
-    <h2>Update Employee</h2>
+<br>
+<br>
+<div class="divmid">
+  <div class="inside">
+    <div class="divBody">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="font-weight: bold;">Updating {{employee.first_name}}</h2>
+      </div>
+      <hr>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="firstName">First Name:</label>
@@ -21,7 +28,9 @@
         <label for="salary">Salary:</label>
         <input type="number" class="form-control" id="salary" required [(ngModel)]="employee.salary" name="salary">
       </div>
+      <br>
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
-  
+</div>
+</div>

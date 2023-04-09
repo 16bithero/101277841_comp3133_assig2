@@ -21,19 +21,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private employeeService: EmployeeService, private router: Router) {}
 
-  pastelRainbowColors = [
-    'hsl(0, 70%, 70%)',      // Red
-    'hsl(60, 70%, 70%)',     // Yellow
-    'hsl(120, 70%, 70%)',    // Green
-    'hsl(180, 70%, 70%)',    // Cyan
-    'hsl(240, 70%, 70%)',    // Blue
-    'hsl(300, 70%, 70%)'     // Purple
-  ];
-
-  getRandomPastelRainbowColor() {
-    const randomIndex = Math.floor(Math.random() * this.pastelRainbowColors.length);
-    return this.pastelRainbowColors[randomIndex];
-  }
 
   ngOnInit(): void {
     this.getEmployees();
@@ -63,6 +50,17 @@ export class DashboardComponent implements OnInit {
 
   deleteEmployee(id: number): void {
     console.log('Delete employee with ID:', id);
-    // Add logic to delete employee from server
+    this.employeeService.deleteEmployee(id.toString()).subscribe(
+      (response) => {
+        console.log(response);
+        // Remove the deleted employee from the employees array
+        this.employees = this.employees.filter((employee) => employee.id !== id);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
+  
+  
 }
