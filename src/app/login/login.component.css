@@ -1,0 +1,29 @@
+.page-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.brand-details {
+    flex: 1.5;
+    background: #f8f9fa;
+    padding: 1rem;
+    background-color: #273468;
+    z-index: 9999;
+}
+
+.form-section {
+    flex: 2;
+    padding: 1rem;
+    background-color: white;
+  }
+
+  .loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+  }
