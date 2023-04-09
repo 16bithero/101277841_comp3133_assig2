@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     FormsModule,
     RouterModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

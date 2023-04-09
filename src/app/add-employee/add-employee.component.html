@@ -7,30 +7,68 @@
         <h2 style="font-weight: bold;">Add Employee</h2>
       </div>
       <hr>
-      <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="firstName">First Name:</label>
-          <input type="text" class="form-control" id="firstName" required [(ngModel)]="firstName" name="firstName">
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name:</label>
-          <input type="text" class="form-control" id="lastName" required [(ngModel)]="lastName" name="lastName">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email">
-        </div>
-        <div class="form-group">
-          <label for="gender">Gender:</label>
-          <input type="text" class="form-control" id="gender" required [(ngModel)]="gender" name="gender">
-        </div>
-        <div class="form-group">
-          <label for="salary">Salary:</label>
-          <input type="number" class="form-control" id="salary" required [(ngModel)]="salary" name="salary">
-        </div>
-        <br>
-        <button class="btn btn-primary" type="submit" class="btn btn-primary">Submit</button>
-      </form>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input formControlName="firstName" type="text" class="form-control" id="firstName"
+      [ngClass]="{ 'is-invalid': employeeForm.controls['firstName'].invalid && employeeForm.controls['firstName'].touched }" />
+    <div *ngIf="employeeForm.controls['firstName'].invalid && employeeForm.controls['firstName'].touched"
+      class="invalid-feedback">
+      First name is required.
     </div>
   </div>
+
+  
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input formControlName="lastName" type="text" class="form-control" id="lastName"
+      [ngClass]="{ 'is-invalid': employeeForm.controls['lastName'].invalid && employeeForm.controls['lastName'].touched }" />
+    <div *ngIf="employeeForm.controls['lastName'].invalid && employeeForm.controls['lastName'].touched"
+      class="invalid-feedback">
+      Last name is required.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input formControlName="email" type="email" class="form-control" id="email"
+      [ngClass]="{ 'is-invalid': employeeForm.controls['email'].invalid && employeeForm.controls['email'].touched }" />
+    <div *ngIf="employeeForm.controls['email'].invalid && employeeForm.controls['email'].touched" class="invalid-feedback">
+      Email is required and must be valid.
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="gender">Gender:</label>
+    <select formControlName="gender" class="form-control" id="gender"
+      [ngClass]="{ 'is-invalid': employeeForm.controls['gender'].invalid && employeeForm.controls['gender'].touched }">
+      <option value="" disabled selected>Select a gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <div *ngIf="employeeForm.controls['gender'].invalid && employeeForm.controls['gender'].touched" class="invalid-feedback">
+      Gender is required.
+    </div>
+</div>
+
+
+  <div class="form-group">
+    <label for="salary">Salary:</label>
+    <input formControlName="salary" type="number" class="form-control" id="salary"
+      [ngClass]="{ 'is-invalid': employeeForm.controls['salary'].invalid && employeeForm.controls['salary'].touched }" />
+
+    <div *ngIf="employeeForm.controls['salary'].invalid && employeeForm.controls['salary'].touched"
+      class="invalid-feedback">
+
+    </div>
+  </div>
+  <br>
+  <div style="padding-left: 0.5em;">
+    <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Add Employee</button>
+  </div>
+</form>
+</div>
+</div>
 </div>

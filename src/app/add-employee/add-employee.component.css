@@ -46,3 +46,17 @@
     width: 25%;
     text-align: left;
 }
+
+label {
+    font-weight: bold;
+}
+
+.form-group{
+    padding: 0.5em;
+}
+
+button {
+    background-color: #3c4776;
+    font-weight: bold;
+    border: none;
+}

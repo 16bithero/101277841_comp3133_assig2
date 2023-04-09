@@ -5,3 +5,9 @@
     align-items: center;
     justify-content: center;
   }
+
+  body {
+    height: 100vh;
+    background-image: linear-gradient(to bottom right, whitesmoke 75%, #273468 0%);
+  }
+  

@@ -23,5 +23,5 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
-  title = '101277841_comp3133_assig2';
+  title = 'Windstars';
 }
