@@ -22,9 +22,9 @@ export class LoginComponent {
           // Navigate to dashboard component
           this.router.navigate(['/dashboard']);
         } else if (response.errors && response.errors.length > 0) {
-          this.error = 'Login failed. Invalid credentials';
+          this.error = 'Invalid credentials. Please try again.';
         } else {
-          this.error = 'Login failed. Invalid credentials';
+          this.error = 'Invalid credentials. Please try again.';
         }
       },
       (error) => {
