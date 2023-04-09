@@ -1,1 +1,10 @@
+<div *ngIf="showNavbar">
+    <nav>
+        <a routerLink="/dashboard">Home</a>
+        <a routerLink="/addSvc">Add Employee</a>
+        <a (click)="logout()">Logout</a>
+      </nav>
+</div>
+
+
 <router-outlet></router-outlet>

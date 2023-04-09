@@ -64,6 +64,20 @@ export class EmployeeService {
     return this.graphqlRequest(mutation, employee);
   }
 
+  public addUser(username: string, email: string, password: string): Observable<any> {
+    const mutation = `
+      mutation AddUser($username: String!, $email: String!, $password: String!) {
+        addUser(username: $username, email: $email, password: $password) {
+          username
+          email
+          password
+        }
+      }
+    `;
+    return this.graphqlRequest(mutation, { username, email, password });
+  }
+  
+
   // Get an employee by ID
   public getEmployee(id: number): Observable<any> {
     const query = `

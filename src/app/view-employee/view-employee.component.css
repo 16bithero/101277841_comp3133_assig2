@@ -1,0 +1,12 @@
+/* Center the modal vertically and horizontally */
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-content {
+    max-height: 90%;
+    overflow-y: auto;
+  }
+  

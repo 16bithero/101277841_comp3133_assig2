@@ -1,1 +1,31 @@
-<p>view-employee works!</p>
+<div class="modal-header">
+    <h5 class="modal-title">Employee Details</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()"></button>
+  </div>
+  <div class="modal-body">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>First Name</th>
+          <td>{{ employee.first_name }}</td>
+        </tr>
+        <tr>
+          <th>Last Name</th>
+          <td>{{ employee.last_name }}</td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td>{{ employee.email }}</td>
+        </tr>
+        <tr>
+          <th>Gender</th>
+          <td>{{ employee.gender }}</td>
+        </tr>
+        <tr>
+          <th>Salary</th>
+          <td>$ {{ employee.salary }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -12,27 +12,24 @@ export class LoginComponent {
   password: string = '';
   error: string = '';
 
-  constructor(private employeeService: EmployeeService, private router: Router) {}
+  constructor(private employeeService: EmployeeService, private router: Router) { }
 
   onSubmit() {
     this.employeeService.userLogin(this.username, this.password).subscribe(
       (response) => {
-        console.log('Response from server:', response); // Log the response
+        console.log('Response from server:', response);
         if (response.data && response.data.userLogin) {
-          console.log('Logged in successfully. Message:', response.data.userLogin);
-          this.router.navigate(['/dashboard']); // Navigate to dashboard component
+          // Navigate to dashboard component
+          this.router.navigate(['/dashboard']);
         } else if (response.errors && response.errors.length > 0) {
-          console.log('Login failed. Message:', response.errors[0].message);
           this.error = 'Login failed. Invalid credentials';
         } else {
-          console.log('Login failed. Unexpected response:', response);
-          // Handle other cases
+          this.error = 'Login failed. Invalid credentials';
         }
       },
       (error) => {
         console.error('Error during login:', error);
-        // Handle errors during the login process
       }
     );
-  }  
+  }
 }

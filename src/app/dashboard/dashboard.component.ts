@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ViewEmployeeComponent } from '../view-employee/view-employee.component';
 
 interface Employee {
   id: number;
@@ -18,8 +20,9 @@ interface Employee {
 })
 export class DashboardComponent implements OnInit {
   employees: Employee[] = [];
+  bsModalRef!: BsModalRef;
 
-  constructor(private employeeService: EmployeeService, private router: Router) {}
+  constructor(private employeeService: EmployeeService, private router: Router, private modalService: BsModalService) {}
 
 
   ngOnInit(): void {
@@ -40,8 +43,21 @@ export class DashboardComponent implements OnInit {
 
   viewEmployee(id: number): void {
     console.log('View employee with ID:', id);
-    // Add logic to display employee details
+    this.employeeService.getEmployee(id).subscribe(
+      (response) => {
+        const employee = response.data.searchEmployeeID;
+        this.bsModalRef = this.modalService.show(ViewEmployeeComponent, {
+          initialState: {
+            employee
+          },
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
+  
 
   editEmployee(id: number): void {
     console.log('Edit employee with ID:', id);

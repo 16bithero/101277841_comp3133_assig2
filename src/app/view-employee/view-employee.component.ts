@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-view-employee',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-employee.component.css']
 })
 export class ViewEmployeeComponent {
+  employee: any;
+
+  constructor(public bsModalRef: BsModalRef) {}
 
 }
