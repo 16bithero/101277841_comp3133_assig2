@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-employee',
@@ -13,7 +14,7 @@ export class AddEmployeeComponent {
   gender: string = '';
   salary: number = 0;
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}
 
   onSubmit() {
     const employee = {
@@ -27,7 +28,7 @@ export class AddEmployeeComponent {
     this.employeeService.addEmployee(employee).subscribe(
       (response) => {
         console.log('Response from server:', response); // Log the response
-        // Handle the success response here
+        this.router.navigate(['/dashboard']); // Navigate to dashboard component
       },
       (error) => {
         console.error('Error during add employee:', error);

@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root',
@@ -30,65 +28,64 @@ export class EmployeeService {
     return this.graphqlRequest(query, { username, password });
   }
   
-  
-
   // CRUD operations
+
   // List all employees
-public getEmployees(): Observable<any> {
-  const query = `
-    query {
-      getEmployees {
-        id
-        first_name
-        last_name
-        email
-        gender
-        salary
+  public getEmployees(): Observable<any> {
+    const query = `
+      query {
+        getEmployees {
+          id
+          first_name
+          last_name
+          email
+          gender
+          salary
+        }
       }
-    }
-  `;
-  return this.graphqlRequest(query);
-}
+    `;
+    return this.graphqlRequest(query);
+  }
 
-// Add a new employee
-public addEmployee(employee: any): Observable<any> {
-  const mutation = `
-    mutation AddEmployee($employee: EmployeeInput!) {
-      addEmployee(employee: $employee) {
-        id
-        first_name
-        last_name
-        email
-        gender
-        salary
+  // Add a new employee
+  public addEmployee(employee: any): Observable<any> {
+    const mutation = `
+      mutation AddEmployee($first_name: String!, $last_name: String!, $email: String!, $gender: String!, $salary: Float!) {
+        addEmployee(first_name: $first_name, last_name: $last_name, email: $email, gender: $gender, salary: $salary) {
+          id
+          first_name
+          last_name
+          email
+          gender
+          salary
+        }
       }
-    }
-  `;
-  return this.graphqlRequest(mutation, { employee });
-}
+    `;
+    return this.graphqlRequest(mutation, employee);
+  }
 
-// Get an employee by ID
-public getEmployee(id: number): Observable<any> {
-  const query = `
-    query GetEmployee($id: ID!) {
-      searchEmployeeID(id: $id) {
-        id
-        first_name
-        last_name
-        email
-        gender
-        salary
+  // Get an employee by ID
+  public getEmployee(id: number): Observable<any> {
+    const query = `
+      query GetEmployee($id: ID!) {
+        searchEmployeeID(id: $id) {
+          id
+          first_name
+          last_name
+          email
+          gender
+          salary
+        }
       }
-    }
-  `;
-  return this.graphqlRequest(query, { id });
-}
+    `;
+    return this.graphqlRequest(query, { id });
+  }
 
 // Update an employee by ID
 public updateEmployee(id: number, employee: any): Observable<any> {
   const mutation = `
-    mutation UpdateEmployee($id: ID!, $employee: EmployeeInput!) {
-      updateEmployee(id: $id, employee: $employee) {
+    mutation UpdateEmployee($id: String!, $first_name: String!, $last_name: String!, $email: String!, $gender: String!, $salary: Float!) {
+      updateEmployee(id: $id, first_name: $first_name, last_name: $last_name, email: $email, gender: $gender, salary: $salary) {
         id
         first_name
         last_name
@@ -98,19 +95,19 @@ public updateEmployee(id: number, employee: any): Observable<any> {
       }
     }
   `;
-  return this.graphqlRequest(mutation, { id, employee });
+  return this.graphqlRequest(mutation, { id, ...employee });
 }
 
-// Delete an employee by ID
-public deleteEmployee(id: number): Observable<any> {
-  const mutation = `
-    mutation DeleteEmployee($id: ID!) {
-      deleteEmployee(id: $id) {
-        id
+
+  // Delete an employee by ID
+  public deleteEmployee(id: number): Observable<any> {
+    const mutation = `
+      mutation DeleteEmployee($id: ID!) {
+        deleteEmployee(id: $id) {
+          id
+        }
       }
-    }
-  `;
-  return this.graphqlRequest(mutation, { id });
-}
-
+    `;
+    return this.graphqlRequest(mutation, { id });
+  }
 }

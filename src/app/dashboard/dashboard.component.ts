@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
+import { Router } from '@angular/router';
 
 interface Employee {
   id: number;
@@ -17,9 +18,8 @@ interface Employee {
 })
 export class DashboardComponent implements OnInit {
   employees: Employee[] = [];
-  
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}
 
   pastelRainbowColors = [
     'hsl(0, 70%, 70%)',      // Red
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit {
 
   editEmployee(id: number): void {
     console.log('Edit employee with ID:', id);
-    // Add logic to navigate to employee edit page
+    this.router.navigate(['/updateEmployee', id]);
   }
 
   deleteEmployee(id: number): void {
