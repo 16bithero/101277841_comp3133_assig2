@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +10,9 @@ import { EmployeeService } from '../employee.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  error: string = '';
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}
 
   onSubmit() {
     this.employeeService.userLogin(this.username, this.password).subscribe(
@@ -18,10 +20,10 @@ export class LoginComponent {
         console.log('Response from server:', response); // Log the response
         if (response.data && response.data.userLogin) {
           console.log('Logged in successfully. Message:', response.data.userLogin);
-          // Handle successful login (e.g., store the token, navigate to another page)
+          this.router.navigate(['/dashboard']); // Navigate to dashboard component
         } else if (response.errors && response.errors.length > 0) {
           console.log('Login failed. Message:', response.errors[0].message);
-          // Handle failed login
+          this.error = 'Login failed. Invalid credentials';
         } else {
           console.log('Login failed. Unexpected response:', response);
           // Handle other cases

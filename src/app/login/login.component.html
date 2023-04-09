@@ -1,12 +1,47 @@
-<form (ngSubmit)="onSubmit()">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" [(ngModel)]="username" name="username" required />
+<div class="page-container">
+    <div class="brand-details">
+      <div [style]="{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%'}">
+        <div [style]="{marginTop: '8em'}">
+          <h1 [style]="{textAlign: 'center', marginBottom: '16px', color: 'whitesmoke', fontWeight: 'bold', fontSize: '4em'}">windstars</h1>
+          <h5 [style]="{textAlign: 'center', color: 'whitesmoke', fontWeight: 'light'}">Salon-quality appointments, delivered.</h5>
+        </div>
+        <img src="assets/coverImage.jpg" alt="Cover" [style]="{width: '45%', position: 'absolute', bottom: '0', marginBottom: '-40px'}" />
+      </div>
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" required />
+  
+    <div class="form-section">
+      <div class="loginForm">
+        <section [style]="{width: '50%', boxShadow: 'none'}">
+          <h4 [style]="{fontWeight: 'bold', marginBottom: '1.5em'}">Welcome to Windstars</h4>
+          <form (submit)="onSubmit()">
+            <div class="form-group mb-3">
+              <label>Email</label>
+              <input type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group mb-3">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Enter Password" required>
+            </div>
+    
+  
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [style]="{width: 'auto', backgroundColor: '#273468', fontWeight: 'bold', border: 'none'}"
+            >
+              Log In
+            </button>
+           
+            <br />
+            <br/>
+            <h4 [style]="{color: '#E32636', fontWeight: 'bold', textAlign: 'center'}">{{error}}</h4>
+            <br />
+            <label>Don't have an account?
+              <a routerLink="/signup" style="text-decoration: none"> Sign up</a>
+            </label>
+          </form>
+        </section>
+      </div>
     </div>
-    <button type="submit">Log in</button>
-  </form>
+  </div>
   

@@ -1,1 +1,47 @@
-<p>dashboard works!</p>
+<br>
+<br>
+<div class="divmid">
+    <div class="inside">
+        <div class="divBody">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="font-weight: bold;">Employee List</h2>
+                <a routerLink="/addSvc">
+                    <button style="width: auto; background-color: #273468; font-weight: bold; border: none; margin-left: auto; font-size: 1.2rem; padding: 0.5rem 1rem;" type="button" class="btn btn-primary custom-btn">Add Employee</button>
+                </a>
+            </div>
+            
+            <hr>
+
+            <section class="divbox" style="width: 80%; margin: 1.5em auto;" *ngFor="let employee of employees">
+                <div class="appointment-box">
+                    <div class="appointment-section" style="text-align: center; margin-right: 1em;">
+                        <span class="fa-layers fa-fw">
+                            <i class="fa-solid fa-circle-user fa-4x" [ngStyle]="{'color': getRandomPastelRainbowColor()}"></i>
+                        </span>
+                    </div>
+                    <div class="appointment-section" style="width: 40%;">
+                        <h2 style="font-weight: bold;">{{ employee.first_name }}</h2>
+                    </div>
+                    <div class="appointment-section" style="width: 40%;">
+                        <h5>Email</h5>
+                        {{ employee.email }}
+                    </div>
+                    <div class="appointment-section" style="margin-right: 2em; left: 1em;">
+                        <h5>Gender</h5>
+                        {{ employee.gender }}
+                    </div>
+                    <div class="appointment-section">
+                        <h5>Actions</h5>
+                        <button (click)="viewEmployee(employee.id)"> <i class="fa-solid fa-eye"></i></button>
+                        <button (click)="editEmployee(employee.id)"> <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button (click)="deleteEmployee(employee.id)"> <i class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </section>
+            <br>
+        </div>
+        <br>
+    </div>
+</div>
+
