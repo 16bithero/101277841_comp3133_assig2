@@ -2,6 +2,15 @@
     <h5 class="modal-title">Employee Details</h5>
     <button type="button" class="btn-close" aria-label="Close" (click)="bsModalRef.hide()"></button>
   </div>
+  <div style="display: flex; justify-content: center; padding: 1em;">
+    <i class="fa-solid fa-circle-user fa-7x" 
+      [ngClass]="{
+        'male': employee.gender === 'Male',
+        'female': employee.gender === 'Female',
+        'other': employee.gender === 'Other'
+      }">
+    </i>
+  </div>  
   <div class="modal-body">
     <table class="table">
       <tbody>
@@ -23,7 +32,7 @@
         </tr>
         <tr>
           <th>Salary</th>
-          <td>$ {{ employee.salary }}</td>
+          <td>{{ employee.salary | currency:'USD':true:'1.2-2' }}</td>
         </tr>
       </tbody>
     </table>

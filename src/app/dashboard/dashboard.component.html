@@ -13,7 +13,13 @@
                 <div class="appointment-box">
                     <div class="appointment-section" style="text-align: center; margin-right: 1em;">
                         <span class="fa-layers fa-fw">
-                            <i class="fa-solid fa-circle-user fa-4x" style="color: #2c2c41;"></i>
+                            <i class="fa-solid fa-circle-user fa-4x" 
+                            [ngClass]="{
+                              'male': employee.gender === 'Male',
+                              'female': employee.gender === 'Female',
+                              'other': employee.gender === 'Other'
+                            }"></i>
+                          
                         </span>
                     </div>
                     <div class="appointment-section" style="width: 40%;">
@@ -23,15 +29,15 @@
                         <h5>Email</h5>
                         {{ employee.email }}
                     </div>
-                    <div class="appointment-section" style="margin-right: 2em; left: 1em;">
+                    <div class="appointment-section" style="width: 30%;">
                         <h5>Gender</h5>
                         {{ employee.gender }}
                     </div>
                     <div class="appointment-section">
                         <h5>Actions</h5>
-                        <button (click)="viewEmployee(employee.id)"> <i class="fa-solid fa-eye" style="color: #5a5ad8;"></i></button>
-                        <button (click)="editEmployee(employee.id)"> <i class="fa-solid fa-pen" style="color: #ffc007;"></i></button>
-                        <button (click)="deleteEmployee(employee.id)"> <i class="fa-solid fa-trash" style="color: #ea5353;"></i></button>
+                        <button (click)="viewEmployee(employee.id)"> <i class="fa-solid fa-user fa-lg" style="color: #5a5ad8;"></i></button>
+                        <button (click)="editEmployee(employee.id)"> <i class="fa-solid fa-pen fa-lg" style="color: #ffc007;"></i></button>
+                        <button (click)="deleteEmployee(employee.id)"> <i class="fa-solid fa-trash fa-lg" style="color: #ea5353;"></i></button>
                     </div>
                 </div>
             </section>

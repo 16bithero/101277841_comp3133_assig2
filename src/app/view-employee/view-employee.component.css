@@ -1,12 +1,15 @@
-/* Center the modal vertically and horizontally */
-.modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.male {
+  color: #45559d;
+}
 
-  .modal-content {
-    max-height: 90%;
-    overflow-y: auto;
-  }
-  
+.female {
+  color: #ee82ca;
+}
+
+.other {
+  background-image: linear-gradient(to bottom right, #ff8eb8, #f1a280, #f7ea95, #87ede6, #857ae3, #d97ed9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

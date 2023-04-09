@@ -43,7 +43,6 @@ export class AddEmployeeComponent implements OnInit {
       },
       (error) => {
         console.error('Error during add employee:', error);
-        // Handle the error here
       }
     );
   }
